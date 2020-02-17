@@ -1,6 +1,6 @@
 import React from "react";
 import Ticket from "./Ticket";
-
+import PropTypes from 'prop-types';
 
     var headerStyles = {
       backgroundColor: 'aqua',
@@ -9,37 +9,24 @@ import Ticket from "./Ticket";
 
     };
 
-var masterTicketList = [
-  {
-    names: 'Brindle & Billy',
-    location: '3a',
-    issue: 'busted computer'
-  },
 
-  {
-    names: 'Sally, John & Wilbur',
-    location: '5c',
-    issue: 'wobbly table'
-  },
 
-  {
-    names: 'Everett & N8',
-    location: '7d',
-    issue: 'Fix project'
-
-  }
-];
-
-function TicketList(){
-  return (
+function TicketList(props){
+  console.log(props.ticketList);
+  return(
     <div style={headerStyles}>
     <hr/>
-    {masterTicketList.map((ticket,index) =>
+    {props.ticketList.map((ticket,index) =>
       <Ticket names={ticket.names}
       location={ticket.location}
       issue={ticket.issue}
-      key={index}/>
+      key={ticket.id}/>
     )}
     </div>
-  )};
+  );
+}
+
+  TicketList.propTypes = {
+  ticketList: PropTypes.array
+};
   export default TicketList;
